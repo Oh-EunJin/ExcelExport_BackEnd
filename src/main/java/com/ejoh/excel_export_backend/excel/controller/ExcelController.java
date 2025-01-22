@@ -1,3 +1,15 @@
+/**
+ * packageName    : com.ejoh.excel_export_backend.excel.controller
+ * fileName       : ExcelController
+ * author         : 오은진
+ * date           : 2025.01.22
+ * description    : 엑셀 생성을 위한 Controller
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2025.01.22        오은진            최초 생성
+ */
+
 package com.ejoh.excel_export_backend.excel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ejoh.excel_export_backend.excel.service.ExcelService;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+
+
+
 
 @Slf4j
 @RestController
@@ -23,4 +39,15 @@ public class ExcelController {
         log.info("dummyyyyyyyy");
         return "Vue와 연동 테스트";
     }
+
+    @GetMapping("/excel")
+    public void createExcel(HttpServletResponse response) throws Exception {
+
+        log.info("====================== Controller start ======================");
+        excelService.createExcel(response);
+        log.info("====================== Controller end ======================");
+    }
+    
+    
+    
 }
