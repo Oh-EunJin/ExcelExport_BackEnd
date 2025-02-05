@@ -12,6 +12,8 @@
 
 package com.ejoh.excel_export_backend.excel.service;
 
+import java.util.Map;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -33,8 +35,11 @@ public class ExcelService {
      * @param response
      * @return
      */
-    public void createExcel(HttpServletResponse response) {
+    public void createExcel(HttpServletResponse response, Map<String, String> params) {
         log.info("====================== Service start ======================");
+        // for(String p : params.keySet()) {
+        //     log.info(params.get(p));
+        // } 
 
         XSSFWorkbook wb = new XSSFWorkbook();
 

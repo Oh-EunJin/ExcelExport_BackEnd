@@ -12,9 +12,12 @@
 
 package com.ejoh.excel_export_backend.excel.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ejoh.excel_export_backend.excel.service.ExcelService;
@@ -41,10 +44,10 @@ public class ExcelController {
     }
 
     @GetMapping("/excel")
-    public void createExcel(HttpServletResponse response) throws Exception {
+    public void createExcel(HttpServletResponse response, @RequestParam Map<String, String> params) throws Exception {
 
         log.info("====================== Controller start ======================");
-        excelService.createExcel(response);
+        excelService.createExcel(response, params);
         log.info("====================== Controller end ======================");
     }
     
