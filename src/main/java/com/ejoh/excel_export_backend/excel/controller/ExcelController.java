@@ -15,6 +15,8 @@ package com.ejoh.excel_export_backend.excel.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,8 +28,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 
-
-
 @Slf4j
 @RestController
 @RequestMapping("/api")
@@ -35,13 +35,6 @@ public class ExcelController {
 
     @Autowired
     private ExcelService excelService;
-
-    @GetMapping("/test")
-    public String Test() {
-        
-        log.info("dummyyyyyyyy");
-        return "Vue와 연동 테스트";
-    }
 
     @GetMapping("/excel")
     public void createExcel(HttpServletResponse response, @RequestParam Map<String, String> params) throws Exception {
@@ -51,6 +44,13 @@ public class ExcelController {
         log.info("====================== Controller end ======================");
     }
     
-    
+    @GetMapping("/excel2")
+    public ResponseEntity<Resource> createExcel2(HttpServletResponse response, @RequestParam Map<String, String> params) throws Exception {
+
+        log.info("====================== Controller start ======================");
+        ResponseEntity<Resource> responseEntity = excelService.createExcel2(response, params);
+        log.info("====================== Controller end ======================");
+        return responseEntity;
+    }
     
 }
