@@ -37,10 +37,10 @@ public class ExcelController {
     private ExcelService excelService;
 
     @GetMapping("/excel")
-    public ResponseEntity<Object> downExcel(HttpServletResponse response, @RequestParam Map<String, String> params) throws Exception {
+    public ResponseEntity<Object> excelDownload(HttpServletResponse response, @RequestParam Map<String, String> params) throws Exception {
 
         log.info("====================== Controller start ======================");
-        ResponseEntity<Object> responseEntity = excelService.downExcel(response, params);
+        ResponseEntity<Object> responseEntity = excelService.excelDownload(response, params);
         log.info("====================== Controller end ======================");
         return responseEntity;
     }
