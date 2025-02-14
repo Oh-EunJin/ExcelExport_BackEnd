@@ -68,7 +68,7 @@ public class ExcelService {
      */
     public ResponseEntity<Object> excelDownload(HttpServletResponse response, Map<String, String> params) throws Exception {
         log.info("====================== Service start ======================");
-
+        log.debug("params :: {}", params.toString());
         // Excel 파일 생성
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -84,6 +84,8 @@ public class ExcelService {
         // 바디 설정
         ByteArrayResource resource = new ByteArrayResource(out.toByteArray());
         
+        log.debug("result :: {}", result);
+        log.debug("isUpdateDate :: {}", isUpdateDate);
         log.info("====================== Service end ======================");
 
         if(result > 1) {
